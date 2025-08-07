@@ -1,0 +1,21 @@
+# database:
+#   name: sqlite3
+#   args:
+#     database: /data/homeserver.db
+database:
+  name: psycopg2
+  txn_limit: 10000
+  args:
+    user: synapse
+    password: StringWithoutQuotesFromENV
+    database: synapse
+    host: synapse_db
+    port: 5432
+    cp_min: 5
+    cp_max: 10
+
+...
+
+enable_registration: true
+enable_registration_without_verification: true
+federation_domain_whitelist: []
