@@ -16,6 +16,10 @@ database:
 
 ...
 
+#federation_domain_whitelist: []
+
 enable_registration: true
 enable_registration_without_verification: true
-federation_domain_whitelist: []
+#recaptcha_public_key: "x"
+#recaptcha_private_key: "x"
+#enable_registration_captcha: true

@@ -8,8 +8,8 @@ services:
       - GID=1000
     volumes:
       - ./synapse:/data
-    depends_on:
-      - synapse_db
+#    depends_on:
+#      - synapse_db
     networks:
       m_network:
         ipv4_address: 10.10.10.2
