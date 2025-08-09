@@ -9,7 +9,7 @@ set -euo pipefail  # Exit on error, undefined vars, and pipe failures
 URL="http://10.10.10.2:8008"
 USER="@admin:domain.org"
 PASS="abrakadabra"
-DELAFTERMS=60000  # Delete media older than this many milliseconds, 60000 = 1m (for test)
+DELAFTER=1  # Delete media older than this many minutes, 1 (m) - for test
 LOGOUTALL=false # If true, logout all tokens; if false, logout only current token
 
 # Colors for output
@@ -54,7 +54,14 @@ fi
 log_info "Successfully authenticated. Token: $TOKEN"
 
 # Calculate timestamp for media deletion
-BEFORE_TS=$(($(date +%s%3N) - DELAFTERMS))
+get_before_ts() {
+  local minutes=$1
+  local now_ms=$(date +%s%3N)
+  echo $(( now_ms - minutes * 60 * 1000 ))
+}
+
+BEFORE_TS=$(get_before_ts $DELAFTER)
+
 log_info "Deleting media files older than $(date -d "@$((BEFORE_TS/1000))" '+%Y-%m-%d %H:%M:%S')"
 
 # Delete old media files
