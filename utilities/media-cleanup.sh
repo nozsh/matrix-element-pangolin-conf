@@ -9,7 +9,7 @@ set -euo pipefail  # Exit on error, undefined vars, and pipe failures
 URL="http://10.10.10.2:8008"
 USER="@admin:domain.org"
 PASS="abrakadabra"
-DELAFTER=1  # Delete media older than this many minutes, 1 (m) - for test
+DELAFTER=1  # Delete media older than this many minutes, 1 (minute) - for test
 LOGOUTALL=false # If true, logout all tokens; if false, logout only current token
 
 # Colors for output
