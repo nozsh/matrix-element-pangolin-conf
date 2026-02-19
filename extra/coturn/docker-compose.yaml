@@ -3,12 +3,18 @@ services:
     image: coturn/coturn:latest
     container_name: coturn
     restart: unless-stopped
+    # user: "0:0"
     volumes:
       - ./coturn.conf:/etc/coturn/turnserver.conf:ro
       - ./certs:/etc/coturn/certs:ro
+      # - /etc/letsencrypt:/etc/letsencrypt:ro
+    # network_mode: host
     ports:
       - "3478:3478/tcp"
       - "3478:3478/udp"
       - "5349:5349/tcp"
       - "5349:5349/udp"
       - "59000-60100:59000-60100/udp"
+
+# If you don't open ports via Docker, comment out "- ./certs:/" and all "ports".
+# And uncomment "user" and "network_mode".
