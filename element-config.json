@@ -4,5 +4,6 @@
             "base_url": "https://domain.org"
         }
     },
+    "permalink_prefix": "https://domain.org",
     "disable_custom_urls": true
 }
